@@ -1,0 +1,31 @@
+<form class="d-flex" action="/search">
+    <input class="form-control me-2" id="autocomplete" name="query" type="search" placeholder="Search for more than million cool recipes ..." aria-label="Search">
+    <button class="bttn" type="submit">Search</button>
+</form>
+</br>
+
+
+{% extends "base.html"%} {% block content %} {% for i in items %} {% if i == "recipe" %} {% for j in items[i] %} {% if j == "image" %}
+<img src="{{items[i][j]}}" alt="recipe image" width="500" height="500"> {% endif %} {% if j == "ingredientLines" %}
+<h1 style="margin-right: 75%">Ingredients</h1>
+
+<ul style="margin-right: 69%; margin-bottom: 15%; margin-top: 2%;">
+    {% for k in items[i][j] %}
+    <li>{{k}}</li>
+    {% endfor %}
+</ul>
+{% endif %} {% if j == "dishType" %} {% for d in items[i][j] %}
+<h1 style="position: absolute;">Dish Type - {{d}}</h1>
+{% endfor %} {% endif %} {% if j == "digest" %} {% for di in items[i][j] %} {% for y in di %} {{ y }} {% endfor %} {% endfor %} {% endif %} {% if j == "totalWeight" %}
+
+<h3 style="margin-right: 55%; margin-bottom: 25%;"> Total Weight- {{'%0.0f'|format(items[i][j]|float)}}</h3>
+{% endif %} {% if j == "healthLabels" %}
+<h1 style="margin-left: 75%; margin-top:5%;">Health Labels</h1>
+<ul style="margin-left:75%; margin-top:2%;">
+    {% for h in items[i][j] %}
+    <li>{{h}}</li>
+    {% endfor %}
+</ul>
+{% endif %} {% if j == "calories" %}
+<h4>{{'%0.0f'|format(items[i][j]|float)}}</h4>
+{% endif %} {% endfor %} {% endif %} {% endfor %} {% endblock %}

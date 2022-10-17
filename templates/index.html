@@ -1,0 +1,56 @@
+{% extends "base.html"%}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+ <body>
+    {% for i in items %}
+    {% if i =="hits" %}
+    {% for j in items[i] %}
+  <div class="container">
+   <img
+    src="{{j.recipe.image}}"
+    alt="Pancake"
+   />
+   <div class="container__text">
+    <h1>{{j.recipe.label}}</h1>
+    <div class="container__text__star">
+     <span class="fa fa-star checked"></span>
+     <span class="fa fa-star checked"></span>
+     <span class="fa fa-star checked"></span>
+     <span class="fa fa-star checked"></span>
+     <span class="fa fa-star checked"></span>
+    </div>
+    {% for k in j["recipe"]["ingredientLines"] %}
+    <p>
+        {{k}}
+    </p>
+    {% endfor %}
+    <div class="container__text__timing">
+     <div class="container__text__timing_time">
+      <h2>Calories</h2>
+      <p>{{'%0.0f'|format(j.recipe.calories|float)}}</p>
+     </div>
+     <div class="container__text__timing_time">
+      <h2>Total Time</h2>
+      <p>{{j.recipe.totalTime}}</p>
+     </div>
+     <div class="container__text__timing_time">
+      <h2>Yield</h2>
+      <p>{{j.recipe.yield}}</p>
+     </div>
+    </div>
+    
+    <a href={{"recipes/" + j.recipe.uri|replace("http://www.edamam.com/ontologies/edamam.owl#", "")}}>
+
+    <button class="btn">view recipe <i class="fa fa-arrow-right"></i></button>
+    </a>
+   </div>
+  </div>
+ </body>
+</html>
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endblock %}  

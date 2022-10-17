@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <html lang="en">
+        <head>
+         <meta charset="UTF-8" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+         <title>Recipe Card Food</title>
+         <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous"
+         />
+    <link href="{{ url_for('static', path='/css/style.css') }}" rel="stylesheet">
+
+    {% block title %}
+    {% endblock %}
+</head>
+
+<body>
+    {% include "nav.html" %}
+</br>
+
+
+
+    <form class="" action="/search">
+
+    <div class="search__container">
+        <p class="search__title">
+           Search For More Than 1.000.000 Recipes
+        </p>
+    </br>
+        <input class="search__input" type="text" name="query" placeholder="Search">
+    </div>
+    
+    <div class="credits__container">
+    </div>
+    </form>
+    {% block content %}
+    
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    {% block scripts %}
+    {% endblock %}
+
+
+</body>
+</html>
